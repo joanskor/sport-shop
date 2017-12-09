@@ -1,0 +1,71 @@
+<h2 id="title">SKLEP SPORTOWY</h2>
+
+<div class="form">
+  <form action="?" id="product_form" #productForm="ngForm">
+    
+    <p class="field_label">Nazwa produktu</p>
+    <input type="text" class="form-control" id="product_name"
+      required
+      [(ngModel)]="product.name" name="prodName" 
+      #prodName="ngModel">
+      <div [hidden]="prodName.valid" class="alert alert-danger">
+        Nazwa produktu nie może być pusta!
+      </div>
+
+    <p class="field_label">Opis produktu</p>
+    <input type="text" class="form-control" id="product_description"
+      required
+      [(ngModel)]="product.description" name="description"
+      #description="ngModel">
+      <div [hidden]="description.valid" class="alert alert-danger">
+        Opis produktu nie może być pusty!
+      </div>
+
+    <p class="field_label">Rozszerzony opis produktu</p>
+    <input type="text" class="form-control" id="more_description"
+      [(ngModel)]="product.moreDescription" name="more"
+      #more="ngModel">
+
+    <p class="field_label">Cena produktu</p>
+    <input type="number" step="0.01" class="form-control" id="product_price"
+      required
+      [(ngModel)]="product.price" name="price"
+      #price="ngModel">
+    <div [hidden]="price.valid" class="alert alert-danger">
+        Cena produktu nie może być pusta!
+    </div>
+
+    <p class="field_label">Kategoria</p>
+    <div class="form-group">
+      <select class="form-control" id="product_category" 
+        required
+        [(ngModel)]="product.category" name="category"
+        #category="ngModel">
+        <option *ngFor="let category of categories" [value]="category.categoryName">{{category.categoryName}}</option>
+      </select>
+    </div>
+    <div [hidden]="category.valid" class="alert alert-danger">
+      Kategoria nie może być pusta!
+    </div>
+
+    <p class="field_label">Ilość w magazynie</p>
+    <input type="number" class="form-control" id="product_available"
+      required
+      [(ngModel)]="product.available" name="available"
+      #available="ngModel">
+    <div [hidden]="available.valid" class="alert alert-danger">
+        Stan produktu nie może być pusty!
+    </div>    
+
+    <div class="photos">
+      <p class="field_label">Zdjęcia</p>
+      <button id="photo_button" (click)="onAddPhotosClicked()">Dodaj zdjęcie</button>
+    </div>
+  </form>
+
+  
+</div>
+
+<div class="d-flex align-items-center justify-content-center h-100">
+   <button type="submit" class="bottom_button" (click)="onSaveClicked()">Zapisz</button>
+</div>

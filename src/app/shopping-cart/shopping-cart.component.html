@@ -1,0 +1,32 @@
+<h2 id="title">SKLEP SPORTOWY</h2>
+
+<h4 id="sub_title">Twój koszyk na zakupy</h4>
+
+<ul class="ordered_product_list">
+  <li class="products">
+    <div class="product_info" id="amount">Ilość</div>
+    <div class="product_info" id="name">Produkt</div>
+    <div class="product_info" id="price">Cena</div> 
+    <div class="product_info" id="value">Wartość</div>
+  </li>
+  <li class="products" *ngFor="let orderedProduct of orderedProducts">
+    <div class="product_info" id="amount">{{orderedProduct.getAmount()}}</div>
+    <div class="product_info" id="name">{{orderedProduct.getProduct().name}}</div>
+    <div class="product_info" id="price">{{orderedProduct.getProduct().price | currency:'USD':true:'1.2-2'}}</div> 
+    <div class="product_info" id="value">{{orderedProduct.getValue() | currency:'USD':true:'1.2-2'}}</div>
+    <div class="button_remove" (click)="removeProductFromShoppingCart(orderedProduct)">Usuń</div>
+  </li>
+  <li class="products">
+    <div class="product_info" id="amount"></div>
+    <div class="product_info" id="name"></div>
+    <div class="product_info" id="price">Wartość całkowita:</div>
+    <div class="product_info" id="value">{{orderedValue | currency:'USD':true:'1.2-2'}}</div>
+  </li>
+</ul>
+
+<ul class="d-flex align-items-center justify-content-center h-100">
+  <nav>
+    <button routerLink="/products" class="bottom_button">Kontunuuj zakupy</button>
+    <button class="bottom_button" (click)="onOrderClicked()">Złóż zamówienie</button>
+  </nav>
+</ul>

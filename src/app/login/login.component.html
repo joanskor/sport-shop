@@ -1,0 +1,28 @@
+<h2 id="title">SKLEP SPORTOWY</h2>
+
+<div class="form" class="d-flex align-items-center justify-content-center h-100">
+  <form id="address_form" #adressForm="ngForm" (ngSubmit)="login()">
+    <p>Username</p>
+    <input type="text" class="form-control" id="username"
+    required
+    [(ngModel)]="username" name="nick" 
+    #nick="ngModel">
+    <div [hidden]="nick.valid" class="alert alert-danger">
+    Proszę podać nazwę użytkownika.
+    </div>
+
+    <p>Hasło</p>
+    <input type="password" class="form-control" id="password"
+      required
+      [(ngModel)]="password" name="pwd" 
+      #pwd="ngModel">
+    <div [hidden]="pwd.valid" class="alert alert-danger">
+      Proszę podać hasło.
+    </div>
+
+    <div class="d-flex align-items-center justify-content-center h-100">
+      <button type="submit" class="bottom_button">Zaloguj</button>
+    </div>
+  </form>
+</div>
+

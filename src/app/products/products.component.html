@@ -1,0 +1,41 @@
+<div id="title_bar">
+  <nav>
+      <button class="reference_button" routerLink="/login">Zaloguj</button>
+      <button class="reference_button" routerLink="/register">Zarejestruj</button>
+  </nav>
+  <h2 id="title">SKLEP SPORTOWY</h2>
+  <nav>
+      <a id="shopping_cart_state">Koszyk: {{productsAmount}} produkt(ów), {{orderValue | currency:'USD':true:'1.2-2'}}</a>
+      <button class="reference_button" id="go_to_shop" routerLink="/shopping-cart">Do kasy</button>
+  </nav>
+</div>
+
+<div class="container-fluid">
+  <div class="row content">
+    <div class="col-sm-3 sidenav">
+      <ul class="nav nav-pills nav-stacked">
+          <div class="category_name" id="all_categories"
+            [class.selected]="'Wszystkie' === selectedCategory" 
+            (click)="onSelectCategory('Wszystkie')">Wszystkie</div>
+          <li class="categories" *ngFor="let category of categories"
+            [class.selected]="category.categoryName === selectedCategory" 
+            (click)="onSelectCategory(category.categoryName)">
+              <div class="category_name">{{category.categoryName}}</div>
+          </li>
+      </ul>
+    </div>
+
+    <div class="col-sm-9">
+        <ul class="product_list">
+          <li class="products" *ngFor="let product of products | paginate: { itemsPerPage: 3, currentPage: p }">
+            <div (click)="onProductClicked(product)">
+              <div class="product_name">{{product.name | uppercase}}</div>
+              <div class="product_price" (click)="addProductToShoppingCart(product)">{{product.price | currency:'USD':true:'1.2-2'}}</div> 
+              <div class="product_description">{{product.description}}</div>
+            </div>
+          </li>
+            <pagination-controls class="pagination" (pageChange)="p = $event"></pagination-controls>
+        </ul>
+    </div>
+  </div>
+</div>

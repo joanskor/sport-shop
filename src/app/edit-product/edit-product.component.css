@@ -1,0 +1,76 @@
+#title {
+    color: white;
+    font-size: large;
+    position: relative;
+    text-align: center;
+    margin-bottom: 30px;
+    padding: 10px;
+    background-color: #000080;
+  }
+
+#product_form {
+  display: block;
+    width: 90%;
+    position: relative;
+    background-color: #EEE;
+    margin: 10px;
+    border-radius: 4px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-right: 30px;
+    padding-left: 30px;
+}
+
+.field_label {
+  margin-top: 20px;
+  font-size: large;
+  color: #000080;
+}
+
+#photo_button {
+  text-align: center;
+  font-size: x-small;
+  color: #FFFFFF;
+  background-color: #0000FF;
+  border-color: rgb(0, 0, 189);
+  padding-left: 5px;
+  padding-right: 5px;
+  padding-bottom: 2px;
+  padding-top: 2px;
+  position: relative;
+  margin-right: 20px;
+  border-radius: 4px;
+}
+
+.bottom_button {
+    display: inline-block;
+    position: relative;
+    text-align: center;
+    font-size: large;
+    color: #FFFFFF;
+    background-color: #0000FF;
+    border-color: rgb(0, 0, 189);
+    border-radius: 4px;
+    border-style: solid;
+    border-width: 1px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 5px;
+    padding-top: 5px;
+    margin-top: 20px;
+    margin-right: 10px;
+    margin-bottom: 20px;
+}
+
+.ng-valid[required], .ng-valid.required  {
+  border-left: 5px solid #42A948; /* green */
+}
+
+.ng-invalid:not(form)  {
+  border-left: 5px solid #a94442; /* red */
+}
+
+.photos {
+  display: block;
+  width: 90%;
+}

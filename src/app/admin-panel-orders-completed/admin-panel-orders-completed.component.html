@@ -1,0 +1,12 @@
+<h2 id="title">SKLEP SPORTOWY</h2>
+
+<ul id="order_list" class="align-items-center justify-content-center">
+    <li class="orders" *ngFor="let order of completedOrders | paginate: { itemsPerPage: 5, currentPage: p }">
+      <div class="client_name">{{order.clientName}}</div>
+      <div class="order_value">Wartość zamówienia: {{getOrderValue(order) | currency:'USD':true:'1.2-2'}}</div> 
+      <div class="buttons">
+        <button class="order_button" id="show_details">Pokaż szczegóły</button>
+      </div>
+    </li>
+      <pagination-controls class="pagination" (pageChange)="p = $event"></pagination-controls>
+  </ul>

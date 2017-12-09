@@ -1,0 +1,108 @@
+#title {
+    color: white;
+    font-size: large;
+    position: relative;
+    text-align: center;
+    margin-bottom: 30px;
+    padding: 10px;
+    background-color: #000080;
+}
+
+.bottom_button {
+    display: inline-block;
+    text-align: center;
+    font-size: large;
+    color: #FFFFFF;
+    background-color: #0000FF;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 5px;
+    padding-top: 5px;
+    position: relative;
+    margin-top: 50px;
+    margin-right: 10px;
+    border-radius: 4px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: rgb(0, 0, 189);
+}
+
+.product {
+    width: 80%;
+    cursor: pointer;
+    position: relative;
+    list-style-type: none;
+    background-color: #EEE;
+    margin: 10px;
+    height: 150px;
+    border-radius: 4px;
+}
+.product .text {
+    position: relative;
+    top: -3px;
+}
+.product .product_name {
+    display: inline-block;
+    font-size: large;
+    color: #000080;
+    padding: 0.8em 0.7em 0 0.7em;
+    line-height: 1em;
+    position: relative;
+    left: -1px;
+    top: -4px;
+    height: 1em;
+    margin-right: .8em;
+    margin-bottom: 2px;
+    border-radius: 4px;
+}
+.product .product_description {
+    display: block;
+    font-size: small;
+    color: #000000;
+    padding: 0.8em 0.7em 0 0.7em;
+    line-height: 1em;
+    position: relative;
+    top: -4px;
+    height: 1em;
+    margin-right: .8em;
+    border-radius: 4px;
+}
+.product .product_more_description {
+    font-size: small;
+    color: #000000;
+    padding: 0.8em 0.7em 0 0.7em;
+    line-height: 1em;
+    position: relative;
+    top: -4px;
+    height: 1em;
+    margin-right: .8em;
+    margin-top: 20px;
+}
+.product .product_price {
+    text-align: center;
+    font-size: small;
+    color: #FFFFFF;
+    background-color: #000080;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-bottom: 2px;
+    padding-top: 2px;
+    position: relative;
+    margin-top: 10px;
+    margin-right: 20px;
+    border-radius: 4px;
+    float: right;
+}
+.product .product_available {
+    font-size: small;
+    color: #000000;
+    padding: 0.8em 0.7em 0 0.7em;
+    line-height: 1em;
+    position: relative;
+    top: -4px;
+    height: 1em;
+    margin-right: .8em;
+    margin-top: 10px;
+    border-radius: 4px;
+    float: right;
+  }

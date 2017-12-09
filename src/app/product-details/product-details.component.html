@@ -1,0 +1,13 @@
+<h2 id="title">SKLEP SPORTOWY</h2>
+
+<div class="product">
+  <div class="product_name">{{product.name | uppercase}}</div>
+  <div class="product_price">{{product.price | currency:'USD':true:'1.2-2'}}</div> 
+  <div class="product_available">Dostępność: {{product.available}} sztuk</div>
+  <div class="product_description">{{product.description}}</div>
+  <div class="product_more_description">{{product.moreDescription}}</div>
+</div>
+
+<div class="d-flex align-items-center justify-content-center h-100">
+  <button class="bottom_button" (click)="onBackButtonClicked()">Powrót</button>
+</div>

@@ -1,0 +1,21 @@
+<h2 id="title">SKLEP SPORTOWY</h2>
+
+<nav>
+  <ul id="product_list" class="align-items-center justify-content-center">
+    <li class="products" *ngFor="let product of products | paginate: { itemsPerPage: 3, currentPage: p }"
+      (click)="onSelect(product)">
+      <div class="product_name">{{product.name | uppercase}}</div>
+      <div class="product_price">{{product.price | currency:'USD':true:'1.2-2'}}</div> 
+      <div class="product_description">{{product.description}}</div>
+      <div class="product_available">Dostępność: {{product.available}} sztuk</div>
+      <div>
+        <button class="delete_button" (click)="onDeleteClicked(product)">Usuń</button>
+        <button class="edit_button" [routerLink]="['/edit-product', product._id]">Edytuj</button>
+      </div>
+    </li>
+    <pagination-controls class="pagination" (pageChange)="p = $event"></pagination-controls>
+    <div class="d-flex align-items-center justify-content-center h-100">
+      <button class="bottom_button" [routerLink]="['/edit-product', 'nowe']">Dodaj nowy</button>
+    </div>
+</ul>
+</nav>

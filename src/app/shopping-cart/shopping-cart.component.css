@@ -1,0 +1,89 @@
+#title {
+    color: white;
+    font-size: large;
+    position: relative;
+    text-align: center;
+    margin-bottom: 30px;
+    padding: 10px;
+    background-color: #000080;
+}
+
+#sub_title {
+    margin-bottom: 30px;
+    padding: 10px;
+    color: #000080;
+}
+
+.ordered_product_list .products {
+    width: 90%;
+    cursor: pointer;
+    position: relative;
+    list-style-type: none;
+    margin: 10px;
+    height: 50px;
+    border-top: solid;
+    border-color: #DDD;
+    border-width: 0.5px;
+}
+.ordered_product_list .products .product_info {
+  display: inline-block;
+  font-size: large;
+  color: black;
+  padding: 0.8em 0.7em 0 0.7em;
+  line-height: 1em;
+  position: relative;
+  left: -1px;
+  top: -4px;
+  height: 1em;
+  margin-right: .8em;
+  margin-bottom: 2px;
+  margin-top: 10px;
+}
+.ordered_product_list .products .button_remove {
+    text-align: center;
+    font-size: small;
+    color: #FFFFFF;
+    background-color: #ff6819;
+    border-color: #ff5601;
+    border-radius: 4px;
+    border-style: solid;
+    border-width: 1px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 5px;
+    padding-top: 5px;
+    position: relative;
+    margin-right: 50px;
+    margin-top: 10px;
+    float: right;
+}
+.ordered_product_list .products #amount {
+    width: 5%;
+}
+.ordered_product_list .products #name {
+    width: 40%;
+}
+.ordered_product_list .products #price {
+    width: 10%;
+}
+.ordered_product_list .products #value {
+    width: 10%;
+}
+.bottom_button {
+    display: inline-block;
+    text-align: center;
+    font-size: large;
+    color: #FFFFFF;
+    background-color: #0000FF;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 5px;
+    padding-top: 5px;
+    position: relative;
+    margin-top: 20px;
+    margin-right: 10px;
+    border-radius: 4px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: rgb(0, 0, 189);
+}

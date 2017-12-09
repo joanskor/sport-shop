@@ -1,0 +1,28 @@
+<h2 id="title">SKLEP SPORTOWY</h2>
+
+<div class="form" class="address_form">
+  <form action="?" id="address_form" #adressForm="ngForm">
+    <h4 class="form_label">Odbiorca</h4>
+    <p>Imię i nazwisko</p>
+    <input type="text" class="form-control" id="name_surname"
+      required
+      [(ngModel)]="nameSurname" name="name" 
+      #name="ngModel">
+    <div [hidden]="name.valid" class="alert alert-danger">
+      Proszę podać imię i nazwisko.
+    </div>
+
+    <h4 class="form_label">Adres</h4>
+    <p>Nazwa ulicy</p>
+    <input type="text" class="form-control" id="address"
+      required
+      [(ngModel)]="address" name="street" 
+      #street="ngModel">
+    <div [hidden]="street.valid" class="alert alert-danger">
+      Proszę podać nazwę ulicy.
+    </div>
+  </form>
+</div>
+<div class="d-flex align-items-center justify-content-center h-100">
+  <button type="submit" class="bottom_button" (click)="onOrderClicked()">Dokończ zamówienie</button>
+</div>
