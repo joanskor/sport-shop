@@ -1,11 +1,25 @@
 <h2 id="title">SKLEP SPORTOWY</h2>
 
 <div class="product">
-  <div class="product_name">{{product.name | uppercase}}</div>
-  <div class="product_price">{{product.price | currency:'USD':true:'1.2-2'}}</div> 
-  <div class="product_available">Dostępność: {{product.available}} sztuk</div>
-  <div class="product_description">{{product.description}}</div>
-  <div class="product_more_description">{{product.moreDescription}}</div>
+  <div class="pictures">
+    <img class="product_photo" src={{mainPhoto}}>
+    <div fxLayout="row" fxLayoutAlign="start none" >
+      <div class="photos" *ngFor="let photo of photos">
+        <img class="photo_prev" src={{photo}} (click)="onPrevClicked(photo)">
+      </div>
+      <!-- <pagination-controls class="pagination" (pageChange)="p = $event"></pagination-controls> -->
+    </div>
+  </div>
+  <div class="info">
+    <div class="product_name">{{product.name | uppercase}}</div>
+    <div class="product_price">{{product.price | currency:'USD':true:'1.2-2'}}</div> 
+    <div class="product_available">Dostępność: {{product.available}} sztuk</div>
+    <div class="product_description">{{product.description}}</div>
+    <div class="more_info">
+        <h5 class="more_description">Więcej o produkcie:</h5>
+        <div class="product_more_description">{{product.moreDescription}}</div>
+      </div>
+  </div>
 </div>
 
 <div class="d-flex align-items-center justify-content-center h-100">
