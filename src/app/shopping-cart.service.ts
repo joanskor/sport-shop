@@ -43,7 +43,7 @@ export class ShoppingCartService {
     var alreadyExists = false;
     console.log("Add product: " + newChosenProduct.name);
     this.orderedProducts.forEach(element => {
-      if (element.getProduct() == newChosenProduct) {
+      if (element.getProduct()._id === newChosenProduct._id) {
         element.setAmount(element.getAmount()+1);
         console.log("Zmieniono ilość: " + element.getAmount());
         alreadyExists = true;
@@ -63,7 +63,7 @@ export class ShoppingCartService {
         productToRemove.setAmount(productToRemove.getAmount() - 1);
       }
       else if (productToRemove.getAmount() == 1) {
-        var product = this.orderedProducts.find(obj => obj.getProduct().name === productToRemove.getProduct().name);
+        var product = this.orderedProducts.find(obj => obj.getProduct()._id === productToRemove.getProduct()._id);
         var index = this.orderedProducts.indexOf(product);
         this.orderedProducts.splice(index, 1);
       } else {

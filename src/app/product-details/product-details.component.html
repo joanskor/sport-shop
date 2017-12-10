@@ -7,7 +7,6 @@
       <div class="photos" *ngFor="let photo of photos">
         <img class="photo_prev" src={{photo}} (click)="onPrevClicked(photo)">
       </div>
-      <!-- <pagination-controls class="pagination" (pageChange)="p = $event"></pagination-controls> -->
     </div>
   </div>
   <div class="info">
@@ -16,9 +15,9 @@
     <div class="product_available">Dostępność: {{product.available}} sztuk</div>
     <div class="product_description">{{product.description}}</div>
     <div class="more_info">
-        <h5 class="more_description">Więcej o produkcie:</h5>
-        <div class="product_more_description">{{product.moreDescription}}</div>
-      </div>
+      <h5 class="more_description" *ngIf="product.moreDescription != null">Więcej o produkcie:</h5>
+      <div class="product_more_description">{{product.moreDescription}}</div>
+    </div>
   </div>
 </div>
 

@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import {NgxPaginationModule} from 'ngx-pagination';
+import { NgxPaginationModule } from 'ngx-pagination';
 import { FormsModule, ReactiveFormsModule }   from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { MatDialogModule } from '@angular/material/dialog';
@@ -10,6 +10,7 @@ import { AuthHttp, AuthConfig } from 'angular2-jwt';
 import { Http, RequestOptions } from '@angular/http';
 import { HttpModule } from '@angular/http';
 import { ImageUploadModule } from "angular2-image-upload";
+import { NgIf } from '@angular/common';
 
 import { AppComponent } from './app.component';
 import { ProductsComponent } from './products/products.component';
@@ -30,6 +31,7 @@ import { AdminPanelOrdersMenuComponent } from './admin-panel-orders-menu/admin-p
 import { EditProductComponent } from './edit-product/edit-product.component';
 import { OrderSentComponent } from './order-sent/order-sent.component';
 import { ProductDetailsComponent } from './product-details/product-details.component';
+import { ProductDiscountsComponent } from './product-discounts/product-discounts.component';
 
 export function authHttpServiceFactory(http: Http, options: RequestOptions) {
   return new AuthHttp(new AuthConfig(), http, options);
@@ -50,7 +52,8 @@ export function authHttpServiceFactory(http: Http, options: RequestOptions) {
     AdminPanelOrdersMenuComponent,
     EditProductComponent,
     OrderSentComponent,
-    ProductDetailsComponent
+    ProductDetailsComponent,
+    ProductDiscountsComponent
   ],
   imports: [
     BrowserModule,

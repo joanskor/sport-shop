@@ -14,8 +14,8 @@ import { ShoppingCartService } from '../shopping-cart.service';
 export class ProductsComponent implements OnInit {
 
   p: number = 1;
-  products: Product[];
-  categories: Category[];
+  products: Product[] = new Array;
+  categories: Category[] = new Array;
   selectedCategory: string = "Wszystkie";
   productsAmount: number = 0;
   orderValue: number = 0;
@@ -44,9 +44,12 @@ export class ProductsComponent implements OnInit {
   }
 
   public addProductToShoppingCart(product: Product) {
-    this.shoppingCartService.addChosenProduct(product);
-    this.productsAmount = this.shoppingCartService.getOrderAmount();
-    this.orderValue = this.shoppingCartService.getOrderValue();
+    if (product.available > 0) {
+      this.productService.descreaseProductAvailability(product._id);
+      this.shoppingCartService.addChosenProduct(product);
+      this.productsAmount = this.shoppingCartService.getOrderAmount();
+      this.orderValue = this.shoppingCartService.getOrderValue();
+    }
   }
   
   private getCategories() {
@@ -57,10 +60,33 @@ export class ProductsComponent implements OnInit {
   private getProducts(category: string): void {
     if (category === "Wszystkie") {
       this.productService.getProducts()
-        .subscribe(productList => this.products = productList);
+        .subscribe(productList => {
+          this.products = productList;
+          this.checkProductsAvailability();
+          this.productService.setProductList(this.products);
+          console.log("Got products");
+        });
     } else {
       this.productService.getProductsByCategory(category)
-        .subscribe(productList => this.products = productList);
+        .subscribe(productList => {
+          this.products = productList;
+          this.checkProductsAvailability();
+          this.productService.setProductList(this.products);
+          console.log("Got products");
+        });
+    }
+  }
+
+  private checkProductsAvailability() {
+    if (this.productsAmount > 0) {
+      let orderedProducts;
+      this.shoppingCartService.getShoppingCart().subscribe(prods => orderedProducts = prods);
+      orderedProducts.forEach(element => {
+        let product = this.products.find(prod => prod._id === element.product._id);
+        if (product) {
+          product.available -= element.amount;
+        }
+      }); 
     }
   }
 }

@@ -11,7 +11,7 @@ import { AdminPanelService } from '../admin-panel.service';
 export class AdminPanelProductsComponent implements OnInit {
 
   p: number = 1;
-  products: Product[];
+  products: Product[] = new Array;
 
   constructor(private adminPanelService: AdminPanelService) { }
 

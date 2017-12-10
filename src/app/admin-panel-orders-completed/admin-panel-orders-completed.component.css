@@ -7,6 +7,11 @@
     padding: 10px;
     background-color: #000080;
   }
+#sub_title {
+  margin-bottom: 30px;
+  padding: 10px;
+  color: #000080;
+}
   
   #order_list .orders {
       width: 70%;
@@ -15,7 +20,7 @@
       list-style-type: none;
       background-color: #EEE;
       margin: 10px;
-      height: 100px;
+      height: 100%;
       border-radius: 4px;
   }
   #order_list .orders:hover {
@@ -87,3 +92,36 @@
   .pagination /deep/ .ngx-pagination .current {
       background: #000080;
   }
+  
+#order_list .orders .ordered_product_list .products {
+  width: 90%;
+  cursor: pointer;
+  position: relative;
+  list-style-type: none;
+  border-top: solid;
+  border-color: #DDD;
+  border-width: 0.5px;
+}
+#order_list .orders .ordered_product_list .products .product_info {
+  display: inline-block;
+  font-size: x-small;
+  color: black;
+  padding: 0.8em 0.7em 0 0.7em;
+  line-height: 1em;
+  position: relative;
+  left: -1px;
+  top: -4px;
+  height: 1em;
+  margin-right: .8em;
+  margin-bottom: 2px;
+}
+
+#order_list .orders .details {
+  margin: 10px;
+  width: 50%;
+}
+#order_list .orders .details_text {
+  margin-right: 10px;
+  font-size: small;
+  color: #000080;
+}

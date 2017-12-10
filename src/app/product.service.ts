@@ -50,11 +50,23 @@ export class ProductService {
     return this.httpClient.get<Product>(AppSettings.API_URL+ '/product/' + id);
   }
 
+  public increaseProductAvailability(productId: string) {
+    this.productList.find(prod => prod._id === productId).available += 1;
+  }
+
+  public descreaseProductAvailability(productId: string) {
+    this.productList.find(prod => prod._id === productId).available -= 1;
+  }
+
   private handleError<T> (operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
       console.error(error);
       alert("Coś poszło nie tak...");
       return of(result as T);
     }
+  }
+
+  public setProductList(products: Product[]) {
+    this.productList = products;
   }
 }

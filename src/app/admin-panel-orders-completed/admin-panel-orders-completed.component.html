@@ -1,12 +1,22 @@
 <h2 id="title">SKLEP SPORTOWY</h2>
 
-<ul id="order_list" class="align-items-center justify-content-center">
-    <li class="orders" *ngFor="let order of completedOrders | paginate: { itemsPerPage: 5, currentPage: p }">
+<ul id="order_list" class="align-items-center justify-content-center" *ngIf="completedOrders.length > 0">
+    <li class="orders" *ngFor="let order of completedOrders | paginate: { itemsPerPage: 3, currentPage: p }">
       <div class="client_name">{{order.clientName}}</div>
       <div class="order_value">Wartość zamówienia: {{getOrderValue(order) | currency:'USD':true:'1.2-2'}}</div> 
-      <div class="buttons">
-        <button class="order_button" id="show_details">Pokaż szczegóły</button>
-      </div>
+    
+      <details class="details">
+          <summary class="details_text">Szczegóły zamówienia</summary>
+          <ul class="ordered_product_list">
+            <li class="products" *ngFor="let product of order.products">
+              <div class="product_info" id="name">Produkt: {{product.product.name}}</div>
+              <div class="product_info" id="amount">Ilość: {{product.amount}}</div>
+              <div class="product_info" id="price">Cena: {{product.product.price}}</div>
+            </li>
+          </ul>
+      </details>
     </li>
       <pagination-controls class="pagination" (pageChange)="p = $event"></pagination-controls>
   </ul>
+
+  <h4 id="sub_title" *ngIf="completedOrders.length == 0">Brak zrealizowanych zamówień</h4>

@@ -2,6 +2,7 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Router } from '@angular/router';
 import { OrderedProduct } from '../ordered-product';
 import { ShoppingCartService } from '../shopping-cart.service';
+import { ProductService } from '../product.service';
 
 @Component({
   selector: 'app-shopping-cart',
@@ -11,11 +12,12 @@ import { ShoppingCartService } from '../shopping-cart.service';
 })
 export class ShoppingCartComponent implements OnInit {
 
-  orderedProducts: OrderedProduct[];
+  orderedProducts: OrderedProduct[] = new Array;
   orderedValue: number = 0;
 
   constructor(
     private shoppingCartService: ShoppingCartService,
+    private productService: ProductService,
     private router: Router
   ) { }
 
@@ -40,5 +42,6 @@ export class ShoppingCartComponent implements OnInit {
   private removeProductFromShoppingCart(product: OrderedProduct) {
     this.shoppingCartService.removeProduct(product);
     this.orderedValue = this.shoppingCartService.getOrderValue();
+    this.productService.increaseProductAvailability(product.product._id);
   }
 }

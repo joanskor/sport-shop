@@ -51,7 +51,10 @@ export class ProductDetailsComponent implements OnInit {
 
   private getProduct(id: string) {
     this.productService.getProductById(id)
-      .subscribe(product => this.product = product);
+      .subscribe(product => {
+        this.product = product;
+        console.log(JSON.stringify(this.product));
+      });
   }
 
 }

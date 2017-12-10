@@ -1,8 +1,10 @@
 <h2 id="title">SKLEP SPORTOWY</h2>
 
-<h4 id="sub_title">Twój koszyk na zakupy</h4>
+<h4 id="sub_title" *ngIf="orderedProducts.length > 0">Twój koszyk na zakupy</h4>
 
-<ul class="ordered_product_list">
+<h4 id="sub_title" *ngIf="orderedProducts.length == 0">Twój koszyk jest pusty!</h4>
+
+<ul class="ordered_product_list" *ngIf="orderedProducts.length > 0">
   <li class="products">
     <div class="product_info" id="amount">Ilość</div>
     <div class="product_info" id="name">Produkt</div>
@@ -14,7 +16,7 @@
     <div class="product_info" id="name">{{orderedProduct.getProduct().name}}</div>
     <div class="product_info" id="price">{{orderedProduct.getProduct().price | currency:'USD':true:'1.2-2'}}</div> 
     <div class="product_info" id="value">{{orderedProduct.getValue() | currency:'USD':true:'1.2-2'}}</div>
-    <div class="button_remove" (click)="removeProductFromShoppingCart(orderedProduct)">Usuń</div>
+    <button class="button_remove" (click)="removeProductFromShoppingCart(orderedProduct)">Usuń</button>
   </li>
   <li class="products">
     <div class="product_info" id="amount"></div>
@@ -27,6 +29,6 @@
 <ul class="d-flex align-items-center justify-content-center h-100">
   <nav>
     <button routerLink="/products" class="bottom_button">Kontunuuj zakupy</button>
-    <button class="bottom_button" (click)="onOrderClicked()">Złóż zamówienie</button>
+    <button class="bottom_button" (click)="onOrderClicked()" *ngIf="orderedProducts.length > 0">Złóż zamówienie</button>
   </nav>
 </ul>

@@ -7,6 +7,11 @@
   padding: 10px;
   background-color: #000080;
 }
+#sub_title {
+    margin-bottom: 30px;
+    padding: 10px;
+    color: #000080;
+}
 
 #product_list .products {
     width: 90%;

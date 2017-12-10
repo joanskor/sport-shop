@@ -12,7 +12,7 @@ import { map } from 'rxjs/operators';
 export class AdminPanelOrdersComponent implements OnInit {
 
   p: number = 1;
-  orders: Order[];
+  orders: Order[] = new Array;
 
   constructor(private adminPanelService: AdminPanelService) { }
 

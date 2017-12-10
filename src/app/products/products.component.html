@@ -26,16 +26,18 @@
     </div>
 
     <div class="col-sm-9">
-        <ul class="product_list">
+        <ul class="product_list" *ngIf="products.length > 0">
           <li class="products" *ngFor="let product of products | paginate: { itemsPerPage: 3, currentPage: p }">
-            <div (click)="onProductClicked(product)">
-              <div class="product_name">{{product.name | uppercase}}</div>
-              <div class="product_price" (click)="addProductToShoppingCart(product)">{{product.price | currency:'USD':true:'1.2-2'}}</div> 
-              <div class="product_description">{{product.description}}</div>
+            <div>
+              <div class="product_name" (click)="onProductClicked(product)">{{product.name | uppercase}}</div>
+              <button class="product_price" (click)="addProductToShoppingCart(product)">{{product.price | currency:'USD':true:'1.2-2'}}</button> 
+              <div class="product_description" (click)="onProductClicked(product)">{{product.description}}</div>
+              <div class="product_available" (click)="onProductClicked(product)">Dostępność: {{product.available}} sztuk</div>
             </div>
           </li>
             <pagination-controls class="pagination" (pageChange)="p = $event"></pagination-controls>
         </ul>
+        <h4 id="sub_title" *ngIf="products.length == 0">Chwilowy brak produktów...</h4>
     </div>
   </div>
 </div>

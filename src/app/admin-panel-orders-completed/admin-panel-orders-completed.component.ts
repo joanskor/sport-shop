@@ -11,7 +11,7 @@ import { AdminPanelService } from '../admin-panel.service';
 export class AdminPanelOrdersCompletedComponent implements OnInit {
 
   p: number = 1;
-  completedOrders: Order[];
+  completedOrders: Order[] = new Array;
 
   constructor(private adminPanelService: AdminPanelService) { }
 

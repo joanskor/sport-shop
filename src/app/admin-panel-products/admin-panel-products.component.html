@@ -1,7 +1,7 @@
 <h2 id="title">SKLEP SPORTOWY</h2>
 
 <nav>
-  <ul id="product_list" class="align-items-center justify-content-center">
+  <ul id="product_list" class="align-items-center justify-content-center" *ngIf="products.length > 0">
     <li class="products" *ngFor="let product of products | paginate: { itemsPerPage: 3, currentPage: p }">
       <div class="product_name">{{product.name | uppercase}}</div>
       <div class="product_price">{{product.price | currency:'USD':true:'1.2-2'}}</div> 
@@ -18,3 +18,5 @@
     </div>
 </ul>
 </nav>
+
+<h4 id="sub_title" *ngIf="products.length == 0">Brak produktów</h4>
