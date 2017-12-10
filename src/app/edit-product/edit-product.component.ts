@@ -5,6 +5,7 @@ import { Product } from '../product';
 import { Category } from '../category';
 import { AdminPanelService } from '../admin-panel.service';
 import { ProductService } from '../product.service';
+import { FileHolder } from 'angular2-image-upload';
 
 @Component({
   selector: 'app-edit-product',
@@ -46,13 +47,24 @@ export class EditProductComponent implements OnInit {
     this.saveProduct();
   }
 
-  public onAddPhotosClicked() {
-    this.addPhoto();
+  public onUploadFinished(file: FileHolder) {
+    if (this.product.photos == null) {
+      this.product.photos = new Array;
+    }
+    console.log(JSON.stringify(file.src));
+    this.product.photos.push(file.file);
+    console.log(JSON.stringify(this.product));
+  }
+
+  public onRemoved(file: FileHolder) {
   }
 
   private getProduct(id: string) {
     this.productService.getProductById(id)
-      .subscribe(product => this.product = product);
+      .subscribe(product => {
+        this.product = product;
+        console.log("Edited product: " + JSON.stringify(this.product));
+      });
   }
 
   private getCategories() {
@@ -110,7 +122,4 @@ export class EditProductComponent implements OnInit {
       && this.product.available != null;
   }
 
-  private addPhoto() {
-
-  }
 }

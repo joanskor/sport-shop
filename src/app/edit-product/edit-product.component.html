@@ -59,13 +59,21 @@
 
     <div class="photos">
       <p class="field_label">Zdjęcia</p>
-      <button id="photo_button" (click)="onAddPhotosClicked()">Dodaj zdjęcie</button>
+      <image-upload 
+        [max]="5"
+        [buttonCaption]="'Dodaj zdjęcia'"
+        [dropBoxMessage]="'Upuść tutaj zdjęcia'"
+        [clearButtonCaption]="'Wyczyść'"
+        [class]="'upload_photo'"
+        (uploadFinished)="onUploadFinished($event)"
+        (removed)="onRemoved($event)">
+      </image-upload>
     </div>
   </form>
-
-  
 </div>
 
 <div class="d-flex align-items-center justify-content-center h-100">
    <button type="submit" class="bottom_button" (click)="onSaveClicked()">Zapisz</button>
 </div>
+
+        <!-- [uploadedFiles]="product.photos" -->

@@ -9,6 +9,6 @@ export class Product {
         public category:string,
         public moreDescription: string,
         public available: number,
-        public photos: string[]
+        public photos: File[]
     ) {}
 }

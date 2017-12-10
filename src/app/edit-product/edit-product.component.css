@@ -74,3 +74,45 @@
   display: block;
   width: 90%;
 }
+
+.upload_photo {
+  background-color: white;
+  border-radius: 5px;
+  border-style: dashed;
+  border-color: gray;
+  margin:5px;
+  width: 50%;
+}
+.upload_photo .img-ul-upload {
+  color: #FFFFFF;
+  background-color: #0000FF !important;
+  border-color: rgb(0, 0, 189);
+  border-radius: 4px;
+  border-style: solid;
+  border-width: 1px;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-bottom: 5px;
+  padding-top: 5px;
+}
+.upload_photo .img-ul-clear {
+  text-align: center;
+  font-size: small;
+  color: #FFFFFF;
+  background-color: #ff6819 !important;
+  border-color: #ff5601;
+  border-radius: 4px;
+  border-style: solid;
+  border-width: 1px;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-bottom: 5px;
+  padding-top: 5px;
+  margin-left: 20px;
+}
+.upload_photo .img-ul-drag-box-msg {
+  color: #000080 !important;
+}
+.upload_photo .img-ul-container {
+  background-color: white !important;
+}

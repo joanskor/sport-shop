@@ -9,6 +9,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AuthHttp, AuthConfig } from 'angular2-jwt';
 import { Http, RequestOptions } from '@angular/http';
 import { HttpModule } from '@angular/http';
+import { ImageUploadModule } from "angular2-image-upload";
 
 import { AppComponent } from './app.component';
 import { ProductsComponent } from './products/products.component';
@@ -60,7 +61,8 @@ export function authHttpServiceFactory(http: Http, options: RequestOptions) {
     HttpModule,
     MatDialogModule,
     BrowserAnimationsModule,
-    NgbModule.forRoot()
+    NgbModule.forRoot(),
+    ImageUploadModule.forRoot()
   ],
   providers: [ 
     ProductService, 
