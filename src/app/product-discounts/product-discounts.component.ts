@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Product } from '../product';
+import { AdminPanelService } from '../admin-panel.service';
 
 @Component({
   selector: 'app-product-discounts',
@@ -7,9 +9,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProductDiscountsComponent implements OnInit {
 
-  constructor() { }
+  p: number = 1;
+  products: Product[] = new Array;
+
+  constructor(private adminPanelService: AdminPanelService) { }
 
   ngOnInit() {
+    this.getProducts();
+  }
+
+  public onSaveDiscount() {
+    
+  }
+
+  private getProducts() {
+    this.adminPanelService.getProducts()
+      .subscribe(productList => this.products = productList);
   }
 
 }

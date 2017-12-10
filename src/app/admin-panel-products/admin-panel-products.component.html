@@ -7,10 +7,15 @@
       <div class="product_price">{{product.price | currency:'USD':true:'1.2-2'}}</div> 
       <div class="product_description">{{product.description}}</div>
       <div class="product_available">Dostępność: {{product.available}} sztuk</div>
-      <div>
+      <div class="buttons">
+          <button class="edit_button" [routerLink]="['/edit-product', product._id]">Edytuj</button>
         <button class="delete_button" (click)="onDeleteClicked(product)">Usuń</button>
-        <button class="edit_button" [routerLink]="['/edit-product', product._id]">Edytuj</button>
       </div>
+
+      <details class="details" *ngIf="product.moreDescription != null">
+          <summary class="details_text">Więcej informacji</summary>
+          <div class="product_description">{{product.moreDescription}}</div>
+      </details>
     </li>
     <pagination-controls class="pagination" (pageChange)="p = $event"></pagination-controls>
     <div class="d-flex align-items-center justify-content-center h-100">

@@ -13,6 +13,7 @@ import { AdminPanelOrdersCompletedComponent } from './admin-panel-orders-complet
 import { EditProductComponent } from './edit-product/edit-product.component';
 import { OrderSentComponent } from './order-sent/order-sent.component';
 import { ProductDetailsComponent } from './product-details/product-details.component';
+import { ProductDiscountsComponent } from './product-discounts/product-discounts.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/products', pathMatch: 'full' },
@@ -28,7 +29,8 @@ const routes: Routes = [
   { path: 'admin-panel-orders-completed', component: AdminPanelOrdersCompletedComponent },
   { path: 'edit-product/:id', component: EditProductComponent },
   { path: 'order-sent', component: OrderSentComponent },
-  { path: 'product-details/:id', component: ProductDetailsComponent }
+  { path: 'product-details/:id', component: ProductDetailsComponent },
+  { path: 'product-discounts', component: ProductDiscountsComponent }
 ];
 
 @NgModule({
