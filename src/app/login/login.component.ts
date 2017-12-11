@@ -27,6 +27,7 @@ export class LoginComponent implements OnInit {
         (res:any) => {
           localStorage.setItem('token', res.token);
           if (this.username === "admin") {
+            localStorage.setItem('admin', 'true');
             this.router.navigate(['admin-panel']);
           } else {
             this.router.navigate(['products']);
@@ -36,6 +37,10 @@ export class LoginComponent implements OnInit {
           console.log(err);
       });
     }
+  }
+
+  back() {
+    this.router.navigate(['products']);
   }
 
 }

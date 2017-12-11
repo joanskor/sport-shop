@@ -5,6 +5,7 @@
       <button class="reference_button" routerLink="/register">Zarejestruj</button>
     </div>
     <button class="reference_button" *ngIf="isLoggedIn()" (click)="logout()">Wyloguj</button>
+    <button class="reference_button" *ngIf="isAdmin()" routerLink="/admin-panel">Panel administratora</button>
   </nav>
   <h2 id="title">SKLEP SPORTOWY</h2>
   <nav>

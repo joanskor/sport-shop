@@ -3,8 +3,8 @@
 <div class="product">
   <div class="pictures">
     <img class="product_photo" src={{mainPhoto}}>
-    <div fxLayout="row" fxLayoutAlign="start none" >
-      <div class="photos" *ngFor="let photo of photos">
+    <div fxLayout="row" fxLayoutAlign="start none"  *ngIf="product.photos.length > 0">
+      <div class="photos" *ngFor="let photo of product.photos">
         <img class="photo_prev" src={{photo}} (click)="onPrevClicked(photo)">
       </div>
     </div>

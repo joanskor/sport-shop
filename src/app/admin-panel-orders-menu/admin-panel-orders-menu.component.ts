@@ -13,4 +13,8 @@ export class AdminPanelOrdersMenuComponent implements OnInit {
   ngOnInit() {
   }
 
+  public isAdmin() {
+    return localStorage.getItem('admin') != null;
+  }
+
 }

@@ -1,6 +1,8 @@
 export class Product {
     
     public _id: string;
+    public isDiscount: boolean = false;
+    public discount: number = 0; 
     
     public constructor(
         public name:string,

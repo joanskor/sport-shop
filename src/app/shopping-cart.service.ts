@@ -8,6 +8,7 @@ import { catchError, map, tap } from 'rxjs/operators';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { AppSettings } from './app-settings';
 import { forEach } from '@angular/router/src/utils/collection';
+import * as io from 'socket.io-client';
 
 @Injectable()
 export class ShoppingCartService {
@@ -19,6 +20,17 @@ export class ShoppingCartService {
   private order: Order;
 
   constructor(private httpClient: HttpClient) { }
+
+  private url = 'http://localhost:5000';  
+  private socket;
+
+  getMessages() {
+    this.socket = io.connect(this.url);
+    this.socket = io(this.url);
+    this.socket.on('messages', function (data) {
+      alert(data.message);
+    });
+  }  
 
   getShoppingCart(): Observable<OrderedProduct[]> {
     return of(this.orderedProducts);

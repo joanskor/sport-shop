@@ -1,6 +1,6 @@
 <h2 id="title">SKLEP SPORTOWY</h2>
 
-<ul class="d-flex align-items-center justify-content-center h-100">
+<ul class="d-flex align-items-center justify-content-center h-100" *ngIf="isAdmin()">
         <nav>
                 <button routerLink="/admin-panel-orders" class="bottom_button">Zamówienia oczekujące</button>
                 <button routerLink="/admin-panel-orders-completed" class="bottom_button">Zamówienia zrealizowane</button>

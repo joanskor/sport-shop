@@ -7,7 +7,6 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, map, tap } from 'rxjs/operators';
 import { AppSettings } from './app-settings';
 import * as io from 'socket.io-client';
-import { connect } from 'net';
 
 @Injectable()
 export class ProductService {
@@ -26,7 +25,8 @@ export class ProductService {
     this.socket = io.connect(this.url);
     this.socket = io(this.url);
     this.socket.on('messages', function (data) {
-      alert(data.message);   
+      alert(data.message);
+      this.getProducts().subscribe(products => this.productList = products);
     });
   }  
 

@@ -55,4 +55,8 @@ export class AdminPanelOrdersComponent implements OnInit {
     });
     return orderValue;
   }
+
+  public isAdmin() {
+    return localStorage.getItem('admin') != null;
+  }
 }

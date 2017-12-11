@@ -1,5 +1,6 @@
 <h2 id="title">SKLEP SPORTOWY</h2>
 
+<div *ngIf="isAdmin()">
 <ul id="order_list" class="align-items-center justify-content-center" *ngIf="completedOrders.length > 0">
     <li class="orders" *ngFor="let order of completedOrders | paginate: { itemsPerPage: 3, currentPage: p }">
       <div class="client_name">{{order.clientName}}</div>
@@ -20,3 +21,4 @@
   </ul>
 
   <h4 id="sub_title" *ngIf="completedOrders.length == 0">Brak zrealizowanych zamówień</h4>
+</div>

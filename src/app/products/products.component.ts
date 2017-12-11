@@ -39,6 +39,10 @@ export class ProductsComponent implements OnInit {
     return localStorage.getItem('token') != null;
   }
 
+  public isAdmin(): boolean {
+    return localStorage.getItem('admin') != null;
+  }
+
   public logout() {
     this.loginRegisterService.logout();
   }

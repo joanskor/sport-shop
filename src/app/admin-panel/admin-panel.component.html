@@ -1,6 +1,10 @@
-<h2 id="title">SKLEP SPORTOWY</h2>
+<div id="title_bar">
+        <button class="reference_button" *ngIf="isLoggedIn()" (click)="logout()">Wyloguj</button>
+        <button class="reference_button" *ngIf="isLoggedIn()" (click)="backToMain()">Wróć do Głównej</button>
+        <h2 id="title">SKLEP SPORTOWY</h2>
+</div>
 
-<ul class="d-flex align-items-center justify-content-center h-100">
+<ul class="d-flex align-items-center justify-content-center h-100" *ngIf="isAdmin()">
         <nav>
                 <button routerLink="/admin-panel-products" class="bottom_button">Produkty</button>
                 <button routerLink="/admin-panel-orders-menu" class="bottom_button">Zamówienia</button>

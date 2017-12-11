@@ -1,5 +1,7 @@
 <h2 id="title">SKLEP SPORTOWY</h2>
 
+<div *ngIf="isAdmin()">
+
 <ul id="order_list" class="align-items-center justify-content-center" *ngIf="orders.length > 0">
     <li class="orders" *ngFor="let order of orders | paginate: { itemsPerPage: 3, currentPage: p }">
       <div class="client_name">{{order.clientName}}</div>
@@ -22,3 +24,4 @@
   </ul>
 
   <h4 id="sub_title" *ngIf="orders.length == 0">Brak oczekujących zamówień</h4>
+</div>

@@ -38,4 +38,8 @@ export class AdminPanelOrdersCompletedComponent implements OnInit {
     });
     return orderValue;
   }
+
+  public isAdmin() {
+    return localStorage.getItem('admin') != null;
+  }
 }
