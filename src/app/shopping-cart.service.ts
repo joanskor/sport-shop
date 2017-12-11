@@ -7,6 +7,7 @@ import { of } from 'rxjs/observable/of';
 import { catchError, map, tap } from 'rxjs/operators';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { AppSettings } from './app-settings';
+import { forEach } from '@angular/router/src/utils/collection';
 
 @Injectable()
 export class ShoppingCartService {
@@ -52,7 +53,7 @@ export class ShoppingCartService {
 
     if (!alreadyExists) {
       this.orderedProducts.push(new OrderedProduct(1, newChosenProduct));
-      console.log("Dodano nowy produkt");
+      console.log("Dodano nowy produkt " + newChosenProduct._id);
     }
   }
 
@@ -105,9 +106,29 @@ export class ShoppingCartService {
     this.prepareOrder();
     return this.httpClient.post<Order>(AppSettings.API_URL + '/order', this.order, httpOptions)
       .pipe(
-        tap((order: Order) => console.log(JSON.stringify(order))),
+        tap((order: Order) => {
+          console.log(JSON.stringify(order));
+          // this.updateProducts(order, 0);
+        }),
         catchError(this.handleError<Order>('Add order'))
       );
+  }
+
+  private updateProducts(order: Order, i: number) {
+    // order.products.forEach(orderedProduct => {
+      // orderedProduct.product.available -= orderedProduct.amount;
+      console.log("KUŹWA: " + JSON.stringify(order.products[i].product));
+      this.updateProductAvailability(order.products[i].product)
+        .subscribe(() => {
+          console.log("Updated product with availbility: " + JSON.stringify(order.products[i].product));
+          // this.updateProducts(order, i+1);
+        });
+    // });
+  }
+
+  private updateProductAvailability(product: Product): Observable<any> {
+    return this.httpClient.put(AppSettings.API_URL + '/update/' + product._id, product)
+    .pipe(catchError(this.handleError<any>('Update Product Availability')));
   }
 
   private prepareOrder() {
@@ -118,7 +139,7 @@ export class ShoppingCartService {
   private handleError<T> (operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
       console.error(error);
-      alert("Coś poszło nie tak...");
+      // alert("Coś poszło nie tak...");
       return of(result as T);
     }
   }

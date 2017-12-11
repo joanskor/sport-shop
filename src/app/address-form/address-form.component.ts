@@ -52,6 +52,7 @@ export class AddressFormComponent implements OnInit {
   private saveOrder() {
     this.shoppingCartService.saveOrder().subscribe(
       (res:any) => {
+        this.clearAllData();
         this.router.navigate(['order-sent'])
       },
       err => {

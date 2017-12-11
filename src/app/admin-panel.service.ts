@@ -55,6 +55,15 @@ export class AdminPanelService {
     return this.authHttp.put(AppSettings.API_URL + '/complete/' + order._id, order);
   }
 
+  public saveDiscount(products: Product[], discountValue: number, discountTime: number): Observable<Response> {
+    let discoutData = {
+      products: products,
+      discountValue: discountValue,
+      discountTime: discountTime
+    }
+    return this.authHttp.post(AppSettings.API_URL + '/discount', discoutData);
+  }
+
   private handleError<T> (operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
       console.error(error);

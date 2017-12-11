@@ -22,14 +22,20 @@ export class LoginComponent implements OnInit {
   }
  
   login() {
-    this.loginRegisterService.login(this.username, this.password).subscribe(
-      (res:any) => {
-        localStorage.setItem('token', res.token);
-        this.router.navigate(['admin-panel']);
-      },
-      err => {
-        console.log(err);
-    });
+    if (this.username != null && this.password != null) {
+      this.loginRegisterService.login(this.username, this.password).subscribe(
+        (res:any) => {
+          localStorage.setItem('token', res.token);
+          if (this.username === "admin") {
+            this.router.navigate(['admin-panel']);
+          } else {
+            this.router.navigate(['products']);
+          }
+        },
+        err => {
+          console.log(err);
+      });
+    }
   }
 
 }

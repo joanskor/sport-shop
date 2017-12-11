@@ -1,7 +1,10 @@
 <div id="title_bar">
   <nav>
+    <div *ngIf="!isLoggedIn()">
       <button class="reference_button" routerLink="/login">Zaloguj</button>
       <button class="reference_button" routerLink="/register">Zarejestruj</button>
+    </div>
+    <button class="reference_button" *ngIf="isLoggedIn()" (click)="logout()">Wyloguj</button>
   </nav>
   <h2 id="title">SKLEP SPORTOWY</h2>
   <nav>

@@ -4,6 +4,7 @@ import { Product } from '../product';
 import { Category } from '../category';
 import { ProductService } from '../product.service';
 import { ShoppingCartService } from '../shopping-cart.service';
+import { LoginRegisterService } from '../login-register.service';
 
 @Component({
   selector: 'app-products',
@@ -23,6 +24,7 @@ export class ProductsComponent implements OnInit {
   constructor(
     private productService: ProductService, 
     private shoppingCartService: ShoppingCartService,
+    private loginRegisterService: LoginRegisterService,
     private router: Router
   ) { }
 
@@ -31,6 +33,14 @@ export class ProductsComponent implements OnInit {
     this.getProducts(this.selectedCategory);
     this.productsAmount = this.shoppingCartService.getOrderAmount();
     this.orderValue = this.shoppingCartService.getOrderValue();
+  }
+
+  public isLoggedIn(): boolean {
+    return localStorage.getItem('token') != null;
+  }
+
+  public logout() {
+    this.loginRegisterService.logout();
   }
 
   public onSelectCategory(selectedCategory: string) {
@@ -47,6 +57,7 @@ export class ProductsComponent implements OnInit {
     if (product.available > 0) {
       this.productService.descreaseProductAvailability(product._id);
       this.shoppingCartService.addChosenProduct(product);
+      console.log("ADD: " + JSON.stringify(product));
       this.productsAmount = this.shoppingCartService.getOrderAmount();
       this.orderValue = this.shoppingCartService.getOrderValue();
     }

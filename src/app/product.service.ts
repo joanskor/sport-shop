@@ -6,6 +6,8 @@ import { of } from 'rxjs/observable/of';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, map, tap } from 'rxjs/operators';
 import { AppSettings } from './app-settings';
+import * as io from 'socket.io-client';
+import { connect } from 'net';
 
 @Injectable()
 export class ProductService {
@@ -13,7 +15,20 @@ export class ProductService {
   private productList: Product[] = new Array;
   private categories: Category[];
 
-  constructor(private httpClient: HttpClient) { }
+  private url = 'http://localhost:5000';  
+  private socket;
+
+  constructor(private httpClient: HttpClient) { 
+    this.getMessages();
+  }
+
+  getMessages() {
+    this.socket = io.connect(this.url);
+    this.socket = io(this.url);
+    this.socket.on('messages', function (data) {
+      alert(data.message);   
+    });
+  }  
 
   public getCategories(): Observable<Category[]> {
     return this.httpClient.get<Category[]>(AppSettings.API_URL + '/categories')
@@ -47,7 +62,7 @@ export class ProductService {
   }
 
   public getProductById(id: string): Observable<Product> {
-    return this.httpClient.get<Product>(AppSettings.API_URL+ '/product/' + id);
+    return this.httpClient.get<Product>(AppSettings.API_URL + '/product/' + id);
   }
 
   public increaseProductAvailability(productId: string) {
@@ -61,7 +76,7 @@ export class ProductService {
   private handleError<T> (operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
       console.error(error);
-      alert("Coś poszło nie tak...");
+      // alert("Coś poszło nie tak...");
       return of(result as T);
     }
   }

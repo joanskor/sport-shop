@@ -12,6 +12,19 @@
       padding: 10px;
       color: #000080;
   }
+
+  #discount_form {
+      display: block;
+      width: 90%;
+      position: relative;
+      margin: 10px;
+      left: 20px;
+      border-radius: 4px;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      padding-right: 30px;
+      padding-left: 30px;
+  }
   
   #product_list .products {
       width: 90%;
@@ -32,7 +45,18 @@
     position: relative;
     top: -3px;
   }
-  #product_list .products .product_name {
+  #product_list .products .check_space {
+    position: absolute;
+    width: 20px;
+    background-color: #000080;
+    height: 100%;
+  }
+  #product_list .products .product_info {
+    position: relative;
+    left: 20px;
+    padding-right: 20px;
+  }
+  #product_list .products .product_info .product_name {
     display: inline-block;
     font-size: large;
     color: #000080;
@@ -46,7 +70,7 @@
     margin-bottom: 2px;
     border-radius: 4px;
   }
-  #product_list .products .product_description {
+  #product_list .products .product_info .product_description {
     display: block;
     font-size: small;
     color: #000000;
@@ -58,7 +82,7 @@
     margin-right: .8em;
     border-radius: 4px;
   }
-  #product_list .products .product_available {
+  #product_list .products .product_info .product_available {
     display: block;
     font-size: small;
     color: #000000;
@@ -71,7 +95,7 @@
     margin-top: 10px;
     border-radius: 4px;
   }
-  #product_list .products .product_price {
+  #product_list .products .product_info .product_price {
       text-align: center;
       font-size: large;
       color: #FFFFFF;
