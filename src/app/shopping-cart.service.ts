@@ -21,16 +21,8 @@ export class ShoppingCartService {
 
   constructor(private httpClient: HttpClient) { }
 
-  private url = 'http://localhost:5000';  
+  private url = 'http://localhost:5000';
   private socket;
-
-  getMessages() {
-    this.socket = io.connect(this.url);
-    this.socket = io(this.url);
-    this.socket.on('messages', function (data) {
-      alert(data.message);
-    });
-  }  
 
   getShoppingCart(): Observable<OrderedProduct[]> {
     return of(this.orderedProducts);
@@ -43,7 +35,7 @@ export class ShoppingCartService {
   public getClientName(): string {
     return this.clientName;
   }
-  
+
   public setClientAddress(clientAddress: string) {
     this.clientAddress = clientAddress;
   }
@@ -71,7 +63,7 @@ export class ShoppingCartService {
 
   public removeProduct(productToRemove: OrderedProduct) {
     if (this.orderedProducts.includes(productToRemove)) {
-      
+
       if (productToRemove.getAmount() > 1) {
         productToRemove.setAmount(productToRemove.getAmount() - 1);
       }
@@ -82,7 +74,7 @@ export class ShoppingCartService {
       } else {
         console.log("Brak");
       }
-    } 
+    }
   }
 
   public getOrderAmount(): number {
@@ -110,7 +102,7 @@ export class ShoppingCartService {
     this.clientName = "";
     this.order = null;
   }
-  
+
   public saveOrder(): Observable<Order> {
     const httpOptions = {
       headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -120,22 +112,9 @@ export class ShoppingCartService {
       .pipe(
         tap((order: Order) => {
           console.log(JSON.stringify(order));
-          // this.updateProducts(order, 0);
         }),
         catchError(this.handleError<Order>('Add order'))
       );
-  }
-
-  private updateProducts(order: Order, i: number) {
-    // order.products.forEach(orderedProduct => {
-      // orderedProduct.product.available -= orderedProduct.amount;
-      console.log("KUŹWA: " + JSON.stringify(order.products[i].product));
-      this.updateProductAvailability(order.products[i].product)
-        .subscribe(() => {
-          console.log("Updated product with availbility: " + JSON.stringify(order.products[i].product));
-          // this.updateProducts(order, i+1);
-        });
-    // });
   }
 
   private updateProductAvailability(product: Product): Observable<any> {

@@ -54,7 +54,7 @@ export class ProductDiscountsComponent implements OnInit {
     });
     return exists;
   }
-  
+
   public onSaveDiscount() {
       if (this.isAllFieldsFilled()) {
         this.updateProductWithDiscount();
@@ -62,7 +62,6 @@ export class ProductDiscountsComponent implements OnInit {
           res => {
             console.log("Utworzono promocję");
             this.location.back();
-            // this.router.navigate(['admin-panel-products']);
           },
           err => {
             console.log(err);
@@ -89,25 +88,11 @@ export class ProductDiscountsComponent implements OnInit {
         }
       );
     });
-    // console.log(1, "Discout product: " + this.selectedProducts[0]);
-    // console.log(2, "Discout old price: " + this.selectedProducts[index].price);
-    // this.selectedProducts[index].price = this.selectedProducts[index].price*(this.discountValue/100);
-    // console.log(3, "Discout new price: " + this.selectedProducts[index].price);
-    // this.adminPanelService.updateProduct(this.selectedProducts[index]).subscribe(
-    //   res => {
-    //     console.log("Updated product: " + JSON.stringify(this.selectedProducts[index]));
-    //     index += 1;
-    //     this.updateProductWithDiscount(index);
-    //   },
-    //   err => {
-    //     console.log(err);
-    //   }
-    // );
   }
 
   private isAllFieldsFilled(): boolean {
-    return this.selectedProducts.length > 0 
-      && this.discountTime != null 
+    return this.selectedProducts.length > 0
+      && this.discountTime != null
       && this.discountTime != null;
   }
 

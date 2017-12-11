@@ -95,7 +95,6 @@ export class EditProductComponent implements OnInit {
       res => {
         console.log("Added product: " + JSON.stringify(this.product));
         this.location.back();
-        // this.router.navigate(['admin-panel-products']);
       },
       err => {
         console.log(err);
@@ -108,7 +107,6 @@ export class EditProductComponent implements OnInit {
       res => {
         console.log("Updated product: " + JSON.stringify(this.product));
         this.location.back();
-        // this.router.navigate(['admin-panel-products']);
       },
       err => {
         console.log(err);
@@ -117,8 +115,8 @@ export class EditProductComponent implements OnInit {
   }
 
   private isAllFieldsFilled(): Boolean {
-    return this.product.name.length > 0 && this.product.description.length > 0 
-      && this.product.price != null && this.product.category.length > 0 
+    return this.product.name.length > 0 && this.product.description.length > 0
+      && this.product.price != null && this.product.category.length > 0
       && this.product.available != null;
   }
 

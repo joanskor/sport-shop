@@ -27,5 +27,8 @@ export class LoginRegisterService {
 
   public logout() {
     localStorage.removeItem('token');
+    if (localStorage.getItem('admin') != null) {
+      localStorage.removeItem('admin');
+    }
   }
 }
